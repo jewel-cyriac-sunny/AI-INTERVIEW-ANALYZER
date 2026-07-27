@@ -1,0 +1,73 @@
+# ========================
+# Python / Backend
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Virtual environments
+venv/
+venv_311/
+backend/venv/
+backend/venv_311/
+.venv/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# MediaPipe model files (auto-downloaded at runtime)
+backend/app/ml/models/
+
+# Uploaded files & generated reports
+backend/app/uploads/
+
+# Prisma generated client (regenerated via `prisma generate`)
+# (lives inside the venv site-packages, but just in case)
+*.db
+*.db-journal
+
+# ========================
+# Node / Admin Frontend
+# ========================
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========================
+# Flutter / Mobile App
+# ========================
+# (Flutter's own .gitignore in mobile_app/ handles most of this,
+#  but these are common extras)
+*.iml
+*.log
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+
+# ========================
+# IDE & OS
+# ========================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary / scratch files
+git_status_output.txt
+*.tmp
+docs

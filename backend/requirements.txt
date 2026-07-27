@@ -1,0 +1,18 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
+prisma>=0.15.0
+python-jose[cryptography]>=3.3.0
+bcrypt==3.2.2
+passlib[bcrypt]>=1.7.4
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+pydantic[email]>=2.0.0
+
+# --- ML & Audio Processing Dependencies ---
+# IMPORTANT: To install PyTorch with correct CUDA (12.4) support on Windows, run this first:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+openai-whisper
+imageio-ffmpeg
+opencv-python>=4.8.0
+mediapipe>=0.10.30
+fpdf2>=2.7.8

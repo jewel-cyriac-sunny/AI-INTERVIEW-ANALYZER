@@ -1,0 +1,7 @@
+cd backend; $env:PATH = "$(Get-Location)\venv\Scripts;$env:PATH"; python -m uvicorn main:app --reload
+
+
+cd backend; $env:PATH = "$(Split-Path (Get-Location) -Parent)\venv_311\Scripts;$env:PATH"; python -m uvicorn main:app --reload
+admin@stellar.local
+123456
+cand@stellar.local

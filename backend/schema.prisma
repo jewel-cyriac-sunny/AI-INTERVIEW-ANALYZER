@@ -1,0 +1,93 @@
+generator client {
+  provider             = "prisma-client-py"
+  interface            = "asyncio"
+  recursive_type_depth = 5
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  admin_id      String      @id @default(uuid()) @db.Uuid
+  name          String
+  email         String      @unique
+  password_hash String
+
+  candidates    Candidate[]
+  questions     Question[]
+
+  @@map("admins")
+}
+
+model Candidate {
+  candidate_id  String      @id @default(uuid()) @db.Uuid
+  name          String
+  email         String
+  phone         String?
+  password_hash String
+
+  admin_id      String      @db.Uuid
+  admin         Admin       @relation(fields: [admin_id], references: [admin_id])
+
+  interviews         Interview[]
+  feedback_reports   FeedbackReport[]
+  interview_sessions InterviewSession[]
+  @@map("candidates")
+}
+
+model Interview {
+  interview_id   String   @id @default(uuid()) @db.Uuid
+  interview_date DateTime
+  interview_type String
+
+  score          Float?
+  filler_words   Int?
+  blinks         Int?
+  poor_posture   Boolean?
+  report_url     String?
+
+  candidate_id   String   @db.Uuid
+  candidate      Candidate @relation(fields: [candidate_id], references: [candidate_id])
+
+  @@map("interviews")
+}
+
+model FeedbackReport {
+  report_id              String @id @default(uuid()) @db.Uuid
+  strength               String @db.Text
+  weakness               String @db.Text
+  improvement_suggestion String @db.Text
+
+  candidate_id           String @db.Uuid
+  candidate              Candidate @relation(fields: [candidate_id], references: [candidate_id])
+
+  @@map("feedback_reports")
+}
+
+
+model InterviewSession {
+  session_id   String   @id @default(uuid()) @db.Uuid
+  start_time   DateTime
+  end_time     DateTime
+  status       String
+
+  candidate_id String   @db.Uuid
+  candidate    Candidate @relation(fields: [candidate_id], references: [candidate_id])
+
+  @@map("interview_sessions")
+}
+
+
+model Question {
+  question_id String @id @default(uuid()) @db.Uuid
+  text        String
+  keywords    Json     @default("[]")
+  time_limit  Int      @default(120)
+
+  admin_id String @db.Uuid
+  admin    Admin  @relation(fields: [admin_id], references: [admin_id])
+
+  @@map("questions")
+}

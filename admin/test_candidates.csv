@@ -1,0 +1,6 @@
+name,email,phone,password
+John Doe,johndoe@example.com,1234567890,pass123
+Jane Smith,janesmith@test.com,9876543210,secret456
+Alice Johnson,alice@demo.net,,
+Bob Brown,bob@company.org,5555555555,changeme
+Charlie White,charlie@test.io,,securepass
